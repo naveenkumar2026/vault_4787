@@ -1,0 +1,65 @@
+<h2 class="screen-align">Vaultcrud</h2>
+<div id="template-it1r" class="row">
+    <div id="template-i1mp" class="cell">
+        <label id="template-iq14" class="label">Type</label>
+        <input id="template-im3w" [(ngModel)]="vault.type" [ngModelOptions]="{standalone: true}"
+        class="input form-control" />
+    </div>
+    <div id="template-ilc8" class="cell">
+        <label id="template-ie02" class="label">Credentials</label>
+        <input id="template-iphb" [(ngModel)]="vault.credentials"
+        [ngModelOptions]="{standalone: true}" class="input form-control" />
+    </div>
+    <div id="template-iyoz" class="cell">
+        <label id="template-ipsm6" class="label">User-id</label>
+        <input id="template-izw2" [(ngModel)]="vault.user-id" [ngModelOptions]="{standalone: true}"
+        class="input form-control" />
+    </div>
+</div>
+<button id="template-iq88i" (click)="GpCreate()" class="button btn btn-primary">create</button>
+<button id="template-ib42b" (click)="GpSearch()" class="button btn btn-primary">get</button>
+<button id="template-iyxm7" (click)="GpDelete()" class="button btn btn-primary">delete</button>
+<div name="grid_template-iie2a" class="">
+    <table id="table" class="table table-bordered  table-striped" data-show-header="true"
+    data-pagination="true" data-id-field="name">
+        <thead class="table table-hover">
+            <tr>
+                <th *ngFor="let column of columnDefs">{{column.headerName}}</th>
+            </tr>
+        </thead>
+        <tbody class="table-design" *ngIf="rowData.length==0">
+            <td style="text-align: center;" colspan="5">No Data Found</td>
+        </tbody>
+        <tbody class="table-design" *ngIf="rowData.length>0">
+            <tr *ngFor="let values of rowData | slice: (page-1) * paginationPageSize :(page-1) * paginationPageSize + paginationPageSize">
+                <td>{{ values.credentials }}</td>
+                <td>{{ values.user-id }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-right">
+        <ngb-pagination class="d-flex justify-content-start" [(page)]="page" [maxSize]="5"
+        [rotate]="true" [pageSize]="paginationPageSize" [collectionSize]="rowData.length"
+        [boundaryLinks]="true"></ngb-pagination>
+    </div>
+</div>
+<div id="myGrid" class=""></div>
+<button id="template-iurj4" (click)="GpGetAllValues()" class="button btn btn-primary">get all</button>
+<div id="template-itzoc" class="row">
+    <div id="template-i1qdo" class="cell">
+        <label id="template-icdv4" class="label">Type</label>
+        <input id="template-ibtx7" [(ngModel)]="vault.type" [ngModelOptions]="{standalone: true}"
+        class="input form-control" />
+    </div>
+    <div id="template-ikore" class="cell">
+        <label id="template-ira3k" class="label">Credentials</label>
+        <input id="template-iezbc" [(ngModel)]="vault.credentials"
+        [ngModelOptions]="{standalone: true}" class="input form-control" />
+    </div>
+    <div id="template-iiz9l" class="cell">
+        <label id="template-iqjq4" class="label">User_id</label>
+        <input id="template-ihetb" [(ngModel)]="vault.user-id"
+        [ngModelOptions]="{standalone: true}" class="input form-control" />
+    </div>
+</div>
+<button id="template-ikvqj" (click)="GpUpdate()" class="button btn btn-primary">update</button>
